@@ -8,6 +8,8 @@ Built with Python, OpenCV, MediaPipe, and Pycaw.
 ## 📸 Demo
 
 GIF will be added later for reference.
+![image](https://github.com/user-attachments/assets/43c58d41-2fd4-4bf9-ba45-7ac6a9d8d88d)
+
 
 ---
 
@@ -27,11 +29,11 @@ GIF will be added later for reference.
 ## ⚙️ How It Works
 
 1. Use OpenCV to capture webcam input
-2. MediaPipe detects hand and landmarks
+2. [MediaPipe](https://github.com/google-ai-edge/mediapipe/blob/master/docs/solutions/hands.md) detects hand and landmarks
 3. Track landmark `4` (thumb tip) and `8` (index tip)
 4. Calculate Euclidean distance between points
 5. Use `np.interp()` to map distance to dB volume range
-6. Set system volume with `pycaw`
+6. Set system volume with [pycaw](https://github.com/AndreMiras/pycaw)
 7. Render visual feedback: circles, lines, volume bar, and percentage
 
 ---
