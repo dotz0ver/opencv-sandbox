@@ -23,7 +23,6 @@ volume = interface.QueryInterface(IAudioEndpointVolume)
 # volume.GetMute()
 # volume.GetMasterVolumeLevel()
 volRange = volume.GetVolumeRange() # (-65.25, 0.0, 0.03125) -> (최소 볼륨, 최대 볼륨, 볼륨 조절 최소 단위 간격)
-volume.SetMasterVolumeLevel(-20.0, None)
 minVol = volRange[0]
 maxVol = volRange[1]
 
@@ -45,13 +44,14 @@ while True:
         cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED) # 위 라인의 중간 지점 circle 생성
 
         length = math.hypot(x2-x1, y2-y1)
-        print(length) # 이걸로 min:20, max:300 알 수 있음
+        # print(length) # 이걸로 min:20, max:300 알 수 있음
 
         # Hand range 20 - 300
         # Volume Range -65 - 0
 
         vol = np.interp(length, [20, 300], [minVol, maxVol])
-        print(vol)
+        print(int(length), vol)
+        volume.SetMasterVolumeLevel(vol, None)
 
         if length<50:
             cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)
